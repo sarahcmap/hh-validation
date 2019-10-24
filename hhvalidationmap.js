@@ -213,12 +213,12 @@ function drawmap() {
 }
 
 function getDiffColor(d) {
-    return d > 15 ? '#1C4E80' :
-        d > 10 ? '#4A729A' :
-            d > 5 ? '#8FA8C1' :
-                d < -15 ? '#D00000' :
-                    d < -10 ? '#DA3434' :
-                        d < -5 ? '#EE9C9C' :
+    return d > 7.5 ? '#1C4E80' :
+        d > 5 ? '#4A729A' :
+            d > 2.5 ? '#8FA8C1' :
+                d < -7.5 ? '#D00000' :
+                    d < -5 ? '#DA3434' :
+                        d < - 2.5 ? '#EE9C9C' :
                             '#EBF0F5';
 }
 
@@ -270,7 +270,7 @@ function onEachFeature(feature, layer) {
 var difflegend = L.control({ position: 'bottomright' });
 difflegend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'difflegend'),
-        grades = [-20, -15, -10, -5, 5, 10, 15, 20],
+        grades = [-20, -7.5, -5, -2.5, 2.5, 5, 7.5, 20],
         labels = [],
         from, to;
 
@@ -283,7 +283,7 @@ difflegend.onAdd = function (map) {
         if (i == 0) {
             from_str = ''
             middle = ''
-            to_str = '-15+'
+            to_str = '-7.5+'
         }
         if (i == 6) {
             middle = ''
