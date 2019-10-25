@@ -126,17 +126,17 @@ function updateview(buttonarg) {
         census_count_var = 'HHINC_1p'
         whichone_name = 'Household income <35k';
     }
-    else if (buttonarg == 'Household income 35k - 60k') {
+    else if (buttonarg == 'Household income 35k - 65k') {
         whichone = 'difINC_2'
         model_count_var = 'HHINC_2m'
         census_count_var = 'HHINC_2p'
-        whichone_name = 'Household income 35k - 60k';
+        whichone_name = 'Household income 35k - 65k';
     }
-    else if (buttonarg == 'Household income 60k - 100k') {
+    else if (buttonarg == 'Household income 65k - 100k') {
         whichone = 'difINC_3'
         model_count_var = 'HHINC_3m'
         census_count_var = 'HHINC_3p'
-        whichone_name = 'Household income 60k - 100k';
+        whichone_name = 'Household income 65k - 100k';
     }
     else if (buttonarg == 'Household income > 100k') {
         whichone = 'difINC_4'
@@ -208,7 +208,7 @@ function updatemap() {
 
 
 function drawmap() {
-    L.geoJson(run1_2015, { style: style, onEachFeature: onEachFeature }).addTo(map);
+    L.geoJson(run2b_2015, { style: style, onEachFeature: onEachFeature }).addTo(map);
     map.addLayer(countiesmini)
 }
 
@@ -250,7 +250,7 @@ function highlightFeaturePuma(e) {
 }
 
 var geojson;
-geojson = L.geoJson(run1_2015, { style: style });
+geojson = L.geoJson(run2b_2015, { style: style });
 
 function resetHighlightPuma(e) {
     geojson.resetStyle(e.target);

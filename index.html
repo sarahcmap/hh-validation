@@ -21,8 +21,9 @@
 
 <body>
   <script src="countiesmini.js"></script>
-  <script src="run1.js"></script>
+  <script src="run2b.js"></script>
 
+  <h3>Attribute: <span id="hhmaptitle">0-vehicle households</span></h3>
   <div class="col-md-6" id="hhvalbuttons">
         <div class="btn-group" role="group">
           <div class="btn-group" role="group">
@@ -43,8 +44,9 @@
               Household Income
             </button>
             <ul class="dropdown-menu" aria-labelledby="hhval2">
-              <li><a class="dropdown-item">Household income <35k</a> </li> <li><a class="dropdown-item">Household income 35k - 60k</a></li>
-              <li><a class="dropdown-item">Household income 60k - 100k</a></li>
+              <li><a class="dropdown-item">Household income <35k</a> </li> 
+              <li><a class="dropdown-item">Household income 35k - 65k</a></li>
+              <li><a class="dropdown-item">Household income 65k - 100k</a></li>
               <li><a class="dropdown-item">Household income > 100k</a></li>
             </ul>
           </div>
@@ -76,6 +78,7 @@
           </div>
         </div>
   <div id="hhvalidationmap"></div>
+  <div id="source"><p>Model: Populationsim run 2015-2 (2013-2017 PUMS).  Observed: 2013-2017 PUMS.  Income is in 1999$</p></div>
     
   <script src="hhvalidationmap.js"></script>
 </body>
