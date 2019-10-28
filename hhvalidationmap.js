@@ -208,7 +208,7 @@ function updatemap() {
 
 
 function drawmap() {
-    L.geoJson(run2b_2015, { style: style, onEachFeature: onEachFeature }).addTo(map);
+    L.geoJson(run4_2015, { style: style, onEachFeature: onEachFeature }).addTo(map);
     map.addLayer(countiesmini)
 }
 
@@ -250,7 +250,7 @@ function highlightFeaturePuma(e) {
 }
 
 var geojson;
-geojson = L.geoJson(run2b_2015, { style: style });
+geojson = L.geoJson(run4_2015, { style: style });
 
 function resetHighlightPuma(e) {
     geojson.resetStyle(e.target);
