@@ -328,5 +328,6 @@ L.control.layers(baseLayers, overlays, { hideSingleBase: true, position: 'bottom
 
 function clearmap() {
     diffdata.remove();
+    countiesmini.remove();
 }
 
