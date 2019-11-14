@@ -1,3 +1,29 @@
+// initial load will be for 2015 data
+var yearview = '2015'
+var datavar = run4_2015
+$('#source').text("Model: Populationsim run 2015-4 (2013-2017 PUMS).  Observed: 2013-2017 PUMS.  Income is in 1999$");
+
+
+$('#yearselection .btn').on('click', function() {
+    yearview = ($(this).find('input').val())
+    updateYear(yearview)
+})
+
+function updateYear(yearview) {
+    if (yearview == '2015') {
+        datavar = run4_2015
+        clearmap()
+        drawmap()
+        $('#source').text("Model: Populationsim run 2015-4 (2013-2017 PUMS).  Observed: 2013-2017 PUMS.  Income is in 1999$");
+    }
+    if (yearview == '2010') {
+        datavar = run1_2010
+        clearmap()
+        drawmap()
+        $('#source').text("Model: Populationsim run popsim21_try2 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
+    }
+}
+
 // basic map
 var mapboxAccessToken = 'pk.eyJ1Ijoic2FyYWhjbWFwIiwiYSI6ImNqc3VzMDl0YzJocm80OXBnZjc2MGk4cGgifQ.S_UmPA1jm5pQPrCCLDs41Q';
 var lat = 41.8781;
@@ -208,7 +234,7 @@ function updatemap() {
 
 
 function drawmap() {
-    L.geoJson(run4_2015, { style: style, onEachFeature: onEachFeature }).addTo(map);
+    diffdata = L.geoJson(datavar, { style: style, onEachFeature: onEachFeature }).addTo(map);
     map.addLayer(countiesmini)
 }
 
@@ -250,7 +276,7 @@ function highlightFeaturePuma(e) {
 }
 
 var geojson;
-geojson = L.geoJson(run4_2015, { style: style });
+geojson = L.geoJson(datavar, { style: style });
 
 function resetHighlightPuma(e) {
     geojson.resetStyle(e.target);
@@ -299,3 +325,8 @@ difflegend.onAdd = function (map) {
 
 difflegend.addTo(map);
 L.control.layers(baseLayers, overlays, { hideSingleBase: true, position: 'bottomleft' }).addTo(map);
+
+function clearmap() {
+    diffdata.remove();
+}
+

@@ -22,8 +22,21 @@
 <body>
   <script src="countiesmini.js"></script>
   <script src="run4.js"></script>
+  <script src="run1_2010.js"></script>
+
+  <div style="margin-left:15px; margin-top: 15px;">
+  <div id="yearselection" class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary active">
+      <input type="radio" name="2015" value="2015" checked> 2015 validation
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="2010" value="2010"> 2010 validation
+    </label>
+  </div>
 
   <h3>Attribute: <span id="hhmaptitle">0-vehicle households</span></h3>
+</div>
+
   <div class="col-md-6" id="hhvalbuttons">
         <div class="btn-group" role="group">
           <div class="btn-group" role="group">
@@ -78,7 +91,7 @@
           </div>
         </div>
   <div id="hhvalidationmap"></div>
-  <div id="source"><p>Model: Populationsim run 2015-4 (2013-2017 PUMS).  Observed: 2013-2017 PUMS.  Income is in 1999$</p></div>
+  <div id="source"><p></p></div>
     
   <script src="hhvalidationmap.js"></script>
 </body>
