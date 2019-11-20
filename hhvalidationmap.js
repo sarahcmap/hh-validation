@@ -17,7 +17,7 @@ function updateYear(yearview) {
         $('#source').text("Model: Populationsim run 2015-4 (2013-2017 PUMS).  Observed: 2013-2017 PUMS.  Income is in 1999$");
     }
     if (yearview == '2010') {
-        datavar = run1_2010
+        datavar = run3_2010
         clearmap()
         drawmap()
         $('#source').text("Model: Populationsim run popsim21_try2 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
