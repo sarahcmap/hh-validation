@@ -5,8 +5,16 @@ $('#source').text("Model: Populationsim run 2015-4 (2013-2017 PUMS).  Observed: 
 
 
 $('#yearselection .btn').on('click', function() {
-    yearview = ($(this).find('input').val())
-    updateYear(yearview)
+    yearview = ($(this).val())
+    if (yearview == 2010) {
+        $('#yearselection .dropdown-menu a').click(function () {
+            which10 = (($(this).text()))
+            updateYear(which10)
+        })
+    }
+    if (yearview == 2015) {
+        updateYear(yearview)
+    }
 })
 
 function updateYear(yearview) {
@@ -16,11 +24,32 @@ function updateYear(yearview) {
         drawmap()
         $('#source').text("Model: Populationsim run 2015-4 (2013-2017 PUMS).  Observed: 2013-2017 PUMS.  Income is in 1999$");
     }
-    if (yearview == '2010') {
-        datavar = run3_2010
+    if (yearview == 'popsim23') {
+        datavar = run4_2010
         clearmap()
         drawmap()
-        $('#source').text("Model: Populationsim run popsim21_try2 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
+        $('#source').text("Model: Populationsim run popsim23 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
+    }
+
+    if (yearview == 'popsim24') {
+        datavar = run5_2010
+        clearmap()
+        drawmap()
+        $('#source').text("Model: Populationsim run popsim24 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
+    }
+
+    if (yearview == 'popsim25') {
+        datavar = run6_2010
+        clearmap()
+        drawmap()
+        $('#source').text("Model: Populationsim run popsim25 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
+    }
+
+    if (yearview == 'popsim26') {
+        datavar = run7_2010
+        clearmap()
+        drawmap()
+        $('#source').text("Model: Populationsim run popsim26 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
     }
 }
 
