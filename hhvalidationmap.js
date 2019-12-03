@@ -13,16 +13,25 @@ $('#yearselection .btn').on('click', function() {
         })
     }
     if (yearview == 2015) {
-        updateYear(yearview)
+        $('#yearselection .dropdown-menu a').click(function () {
+            which15 = (($(this).text()))
+            updateYear(which15)
+        })
     }
 })
 
 function updateYear(yearview) {
-    if (yearview == '2015') {
+    if (yearview == 'ABM') {
         datavar = run4_2015
         clearmap()
         drawmap()
         $('#source').text("Model: Populationsim run 2015-4 (2013-2017 PUMS).  Observed: 2013-2017 PUMS.  Income is in 1999$");
+    }
+    if (yearview == 'urbansim') {
+        datavar = runurbansim2015
+        clearmap()
+        drawmap()
+        $('#source').text("Model: Populationsim run - urbansim future year 2015 (2008-2012 PUMS seed).  Observed: 2013-2017 PUMS.  Income is in 1999$");
     }
     if (yearview == 'popsim23') {
         datavar = run4_2010
