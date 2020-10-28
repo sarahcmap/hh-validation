@@ -18,7 +18,34 @@ $('#yearselection .btn').on('click', function() {
             updateYear(which15)
         })
     }
+    if (yearview == 2020) {
+        $('#yearselection .dropdown-menu a').click(function () {
+            which20 = (($(this).text()))
+            updateYear(which20)
+            button20()
+        })
+    }
 })
+
+function button20() {
+    $('#hhvalbuttons').empty();
+    console.log('hi');
+    $('#hhvalbuttons').html("\
+    <div class='btn-group' role='group'>\
+    <div class='btn-group' role='group'>\
+      <button type='button' id='hhval1' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
+        test\
+      </button>\
+      <ul class='dropdown-menu' aria-labelledby='hhval1'>\
+        <li><a class='dropdown-item'>1-person households</a></li>\
+        <li><a class='dropdown-item'>2-person households</a></li>\
+        <li><a class='dropdown-item'>3-person households</a></li>\
+        <li><a class='dropdown-item'>4+ person households</a></li>\
+      </ul>\
+    </div>\
+  </div>\
+  ");
+}
 
 function updateYear(yearview) {
     if (yearview == 'ABM') {
@@ -59,6 +86,12 @@ function updateYear(yearview) {
         clearmap()
         drawmap()
         $('#source').text("Model: Populationsim run popsim26 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
+    }
+    if (yearview == 'trip-based model') {
+        datavar = run7_2010
+        clearmap()
+        drawmap()
+        $('#source').text("Model: PopulationSim run (2014-2018 PUMS).  Observed: 2020 PopulationSim Controls.  Income is in 2019$");
     }
 }
 
@@ -358,7 +391,7 @@ difflegend.onAdd = function (map) {
             '<i style="background:' + getDiffColor(from + 1) + '"></i> ' +
             from_str + middle + to_str)
     }
-    div.innerHTML = "<h6>Difference</h6>" + labels.join('<br>');
+    div.innerHTML = "<h6>Difference (%) </h6>" + labels.join('<br>');
     return div;
 };
 
