@@ -34,17 +34,83 @@ function button20() {
     <div class='btn-group' role='group'>\
     <div class='btn-group' role='group'>\
       <button type='button' id='hhval1' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
-        test\
+        HH Size\
       </button>\
       <ul class='dropdown-menu' aria-labelledby='hhval1'>\
         <li><a class='dropdown-item'>1-person households</a></li>\
         <li><a class='dropdown-item'>2-person households</a></li>\
         <li><a class='dropdown-item'>3-person households</a></li>\
-        <li><a class='dropdown-item'>4+ person households</a></li>\
+        <li><a class='dropdown-item'>4-person households</a></li>\
+        <li><a class='dropdown-item'>5-person households</a></li>\
+        <li><a class='dropdown-item'>6-person households</a></li>\
+        <li><a class='dropdown-item'>7+-person households</a></li>\
       </ul>\
     </div>\
   </div>\
+  <div class='btn-group' role='group'>\
+  <div class='btn-group' role='group'>\
+    <button type='button' id='hhval2' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
+      HH Income\
+    </button>\
+    <ul class='dropdown-menu' aria-labelledby='hhval2'>\
+      <li><a class='dropdown-item'>Household income <35k</a></li>\
+      <li><a class='dropdown-item'>Household income 35k - 65k</a></li>\
+      <li><a class='dropdown-item'>Household income 65k - 100k</a></li>\
+      <li><a class='dropdown-item'>Household income > 100k</a></li>\
+    </ul>\
+  </div>\
+</div>\
+<div class='btn-group' role='group'>\
+  <div class='btn-group' role='group'>\
+    <button type='button' id='hhval2' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
+      Population\
+    </button>\
+    <ul class='dropdown-menu' aria-labelledby='hhval2'>\
+      <li><a class='dropdown-item'>Adults</a></li>\
+      <li><a class='dropdown-item'>Workers</a></li>\
+      <li><a class='dropdown-item'>Children</a></li>\
+    </ul>\
+  </div>\
+</div>\
+</div>\
+<div class='btn-group' role='group'>\
+  <div class='btn-group' role='group'>\
+    <button type='button' id='hhval2' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
+      Householder Age\
+    </button>\
+    <ul class='dropdown-menu' aria-labelledby='hhval2'>\
+      <li><a class='dropdown-item'>less than 35</a></li>\
+      <li><a class='dropdown-item'>35-64</a></li>\
+      <li><a class='dropdown-item'>greater than 64</a></li>\
+    </ul>\
+  </div>\
+</div>\
+</div>\
+<div class='btn-group' role='group'>\
+  <div class='btn-group' role='group'>\
+    <button type='button' id='hhval2' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\
+      Building Type\
+    </button>\
+    <ul class='dropdown-menu' aria-labelledby='hhval2'>\
+      <li><a class='dropdown-item'>1</a></li>\
+      <li><a class='dropdown-item'>2</a></li>\
+      <li><a class='dropdown-item'>3</a></li>\
+      <li><a class='dropdown-item'>4</a></li>\
+      <li><a class='dropdown-item'>5</a></li>\
+      <li><a class='dropdown-item'>6</a></li>\
+      <li><a class='dropdown-item'>7</a></li>\
+      <li><a class='dropdown-item'>8</a></li>\
+      <li><a class='dropdown-item'>9</a></li>\
+      <li><a class='dropdown-item'>10</a></li>\
+    </ul>\
+  </div>\
+</div>\
   ");
+
+  $('#hhvalbuttons .dropdown-menu a').click(function () {
+    console.log(this);
+    updateview(($(this).text()));
+});
 }
 
 function updateYear(yearview) {
@@ -88,7 +154,7 @@ function updateYear(yearview) {
         $('#source').text("Model: Populationsim run popsim26 (2008-2012 PUMS).  Observed: 2008-2012 PUMS.  Income is in 2012$");
     }
     if (yearview == 'trip-based model') {
-        datavar = run7_2010
+        datavar = run2020
         clearmap()
         drawmap()
         $('#source').text("Model: PopulationSim run (2014-2018 PUMS).  Observed: 2020 PopulationSim Controls.  Income is in 2019$");
@@ -217,6 +283,126 @@ function updateview(buttonarg) {
         model_count_var = 'HHSZ_4m'
         census_count_var = 'HHSZ_4p'
         whichone_name = '4+ person households';
+    }
+    else if (buttonarg == '4-person households') {
+        whichone = 'ps4d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = '4 person households';
+    }
+    else if (buttonarg == '5-person households') {
+        whichone = 'ps5d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = '5 person households';
+    }
+    else if (buttonarg == '6-person households') {
+        whichone = 'ps6d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = '6 person households';
+    }
+    else if (buttonarg == '7+-person households') {
+        whichone = 'ps7d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = '7+ person households';
+    }
+    else if (buttonarg == 'Adults') {
+        whichone = 'pad'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'Adults';
+    }
+    else if (buttonarg == 'Workers') {
+        whichone = 'pwd'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'Workers';
+    }
+    else if (buttonarg == 'Children') {
+        whichone = 'pkd'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'Children';
+    }
+    else if (buttonarg == 'less than 35') {
+        whichone = 'ph35d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'HH less than 35';
+    }
+    else if (buttonarg == '35-64') {
+        whichone = 'ph3564d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'HH 35-64';
+    }
+    else if (buttonarg == 'greater than 64') {
+        whichone = 'ph65d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'HH greater than 64';
+    }
+    else if (buttonarg == '1') {
+        whichone = 'pb1d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld1';
+    }
+    else if (buttonarg == '2') {
+        whichone = 'pb2d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld2';
+    }
+    else if (buttonarg == '3') {
+        whichone = 'pb3d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld3';
+    }
+    else if (buttonarg == '4') {
+        whichone = 'pb4d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld4';
+    }
+    else if (buttonarg == '5') {
+        whichone = 'pb5d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld5';
+    }
+    else if (buttonarg == '6') {
+        whichone = 'pb6d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld6';
+    }
+    else if (buttonarg == '7') {
+        whichone = 'pb7d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld7';
+    }
+    else if (buttonarg == '8') {
+        whichone = 'pb8d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld8';
+    }
+    else if (buttonarg == '9') {
+        whichone = 'pb9d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld9';
+    }
+    else if (buttonarg == '10') {
+        whichone = 'pb10d'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'HHSZ_4p'
+        whichone_name = 'bld10';
     }
     else if (buttonarg == 'Household income <35k') {
         whichone = 'difINC_1'
