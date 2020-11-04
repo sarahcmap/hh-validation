@@ -55,9 +55,9 @@ function button20() {
       HH Income\
     </button>\
     <ul class='dropdown-menu' aria-labelledby='hhval2'>\
-      <li><a class='dropdown-item'>Household income <35k</a></li>\
-      <li><a class='dropdown-item'>Household income 35k - 65k</a></li>\
-      <li><a class='dropdown-item'>Household income 65k - 100k</a></li>\
+      <li><a class='dropdown-item'>Household income <30k</a></li>\
+      <li><a class='dropdown-item'>Household income 30k - 60k</a></li>\
+      <li><a class='dropdown-item'>Household income 60k - 100k</a></li>\
       <li><a class='dropdown-item'>Household income > 100k</a></li>\
     </ul>\
   </div>\
@@ -492,6 +492,24 @@ function updateview(buttonarg) {
         model_count_var = 'HHINC_3m'
         census_count_var = 'HHINC_3p'
         whichone_name = 'Household income 65k - 100k';
+    }
+    else if (buttonarg == 'Household income <30k') {
+        whichone = 'difINC_1'
+        model_count_var = 'HHINC_1m'
+        census_count_var = 'HHINC_1p'
+        whichone_name = 'Household income <30k';
+    }
+    else if (buttonarg == 'Household income 30k - 60k') {
+        whichone = 'difINC_2'
+        model_count_var = 'HHINC_2m'
+        census_count_var = 'HHINC_2p'
+        whichone_name = 'Household income 30k - 60k';
+    }
+    else if (buttonarg == 'Household income 60k - 100k') {
+        whichone = 'difINC_3'
+        model_count_var = 'HHINC_3m'
+        census_count_var = 'HHINC_3p'
+        whichone_name = 'Household income 60k - 100k';
     }
     else if (buttonarg == 'Household income > 100k') {
         whichone = 'difINC_4'
