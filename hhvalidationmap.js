@@ -71,6 +71,11 @@ function button20() {
       <li><a class='dropdown-item'>Adults</a></li>\
       <li><a class='dropdown-item'>Workers</a></li>\
       <li><a class='dropdown-item'>Children</a></li>\
+      <li><a class='dropdown-item'>White Non-Hispanic</a></li>\
+      <li><a class='dropdown-item'>Black Non-Hispanic</a></li>\
+      <li><a class='dropdown-item'>Asian Non-Hispanic</a></li>\
+      <li><a class='dropdown-item'>Other Non-Hispanic</a></li>\
+      <li><a class='dropdown-item'>Hispanic</a></li>\
     </ul>\
   </div>\
 </div>\
@@ -396,6 +401,36 @@ function updateview(buttonarg) {
         model_count_var = 'HHSZ_4m'
         census_count_var = 'KID'
         whichone_name = 'Children';
+    }
+    else if (buttonarg == 'White Non-Hispanic') {
+        whichone = 'pwhited'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'POPWHT'
+        whichone_name = 'White Non-Hispanic';
+    }
+    else if (buttonarg == 'Black Non-Hispanic') {
+        whichone = 'pblackd'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'POPBLK'
+        whichone_name = 'Black Non-Hispanic';
+    }
+    else if (buttonarg == 'Asian Non-Hispanic') {
+        whichone = 'pasiand'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'POPASN'
+        whichone_name = 'Asian Non-Hispanic';
+    }
+    else if (buttonarg == 'Other Non-Hispanic') {
+        whichone = 'potherd'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'POPOTH'
+        whichone_name = 'Other Non-Hispanic';
+    }
+    else if (buttonarg == 'Hispanic') {
+        whichone = 'phispd'
+        model_count_var = 'HHSZ_4m'
+        census_count_var = 'POPHSP'
+        whichone_name = 'Hispanic';
     }
     else if (buttonarg == 'less than 35') {
         whichone = 'ph35d'
