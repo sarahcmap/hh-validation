@@ -31,7 +31,6 @@ $('#yearselection .btn').on('click', function() {
 
 function button20() {
     $('#hhvalbuttons').empty();
-    console.log('hi');
     $('#hhvalbuttons').html("\
     <div class='btn-group' role='group'>\
     <div class='btn-group' role='group'>\
@@ -99,16 +98,16 @@ function button20() {
       Building Type\
     </button>\
     <ul class='dropdown-menu' aria-labelledby='hhval2'>\
-      <li><a class='dropdown-item'>1</a></li>\
-      <li><a class='dropdown-item'>2</a></li>\
-      <li><a class='dropdown-item'>3</a></li>\
-      <li><a class='dropdown-item'>4</a></li>\
-      <li><a class='dropdown-item'>5</a></li>\
-      <li><a class='dropdown-item'>6</a></li>\
-      <li><a class='dropdown-item'>7</a></li>\
-      <li><a class='dropdown-item'>8</a></li>\
-      <li><a class='dropdown-item'>9</a></li>\
-      <li><a class='dropdown-item'>10</a></li>\
+    <li><a class='dropdown-item'>Mobile home or trailer</a></li>\
+    <li><a class='dropdown-item'>One-family detached</a></li>\
+    <li><a class='dropdown-item'>One-family attached</a></li>\
+    <li><a class='dropdown-item'>2 Apartments</a></li>\
+    <li><a class='dropdown-item'>3-4 Apartments</a></li>\
+    <li><a class='dropdown-item'>5-9 Apartments</a></li>\
+    <li><a class='dropdown-item'>10-19 Apartments</a></li>\
+    <li><a class='dropdown-item'>20-49 Apartments</a></li>\
+    <li><a class='dropdown-item'>50+ Apartments</a></li>\
+    <li><a class='dropdown-item'>Boat, RV, van, etc.</a></li>\
     </ul>\
   </div>\
 </div>\
@@ -117,7 +116,6 @@ function button20() {
   d3.select('#hhmaptitle').text('')
 
   $('#hhvalbuttons .dropdown-menu a').click(function () {
-    console.log(this);
     updateview(($(this).text()));
 });
 }
@@ -125,7 +123,6 @@ function button20() {
 
 function buttonnot20() {
     $('#hhvalbuttons').empty();
-    console.log('hi');
     $('#hhvalbuttons').html("\
     <div class='btn-group' role='group'> \
           <div class='btn-group' role='group'>\
@@ -184,7 +181,6 @@ function buttonnot20() {
   d3.select('#hhmaptitle').text('')
 
   $('#hhvalbuttons .dropdown-menu a').click(function () {
-    console.log(this);
     updateview(($(this).text()));
 });
 }
@@ -234,6 +230,12 @@ function updateYear(yearview) {
         clearmap()
         drawmap()
         $('#source').text("Model: PopulationSim run (2014-2018 PUMS).  Observed: 2020 PopulationSim Controls.  Income is in 2019$");
+    }
+    if (yearview == 'ABM 2020') {
+        datavar = abmrun2020
+        clearmap()
+        drawmap()
+        $('#source').text("Model: PopulationSim run (2015-2019 PUMS).  Observed: 2020 ABM PopulationSim Controls.  Income is in 2019$");
     }
 }
 
@@ -316,19 +318,23 @@ info.onAdd = function () {
 };
 info.update = function (props) {
     this._div.innerHTML = (props ?
-        '<table id="datatable"> <tr> <td style="width:105px">PUMA </td> <td>' + props.NAME_NEW + '</td> </tr> <tr> <td> Attribute </td> <td>' + whichone_name + '</td> </tr> <tr> <td>Difference</td> <td>' + Math.round((100 * props[whichone]) * 100) / 100 + '<br> percentage points' + '</td> </tr> <tr> <td>Model Count</td> <td>' + props[model_count_var] + '</td> </tr> <tr> <td>Observed Count</td> <td>' + props[census_count_var] + '</td> </tr></table>'
+        '<table id="datatable"> <tr> <td style="width:105px">PUMA </td> <td>' + props.NAME_NEW + 
+            '</td> </tr> <tr> <td> Attribute </td> <td>' + whichone_name + 
+            '</td> </tr> <tr> <td>Difference</td> <td>' + Math.round((100 * props[whichone]) * 100) / 100 + '<br> percentage points' + 
+            '</td> </tr> <tr> <td>Model Count</td> <td>' + Math.round((props[whichone] * props[census_count_var] + props[census_count_var])) + 
+            '</td> </tr> <tr> <td>Observed Count</td> <td>' + props[census_count_var] + '</td> </tr></table>'
         : 'Hover over a PUMA');
 };
 
 info.addTo(map);
 
 // settings for initial page load
-var whichone = 'difAU_0'
-var whichone_name = '0-vehicle households'
-var model_count_var = 'HHAU_0m'
-var census_count_var = 'HHAU_0p'
+var whichone = 'difSZ_1'
+var whichone_name = '1-person households'
+var model_count_var = 'HHSZ_1m'
+var census_count_var = 'HHSZ_1p'
 var firsttime = true
-d3.select('#hhmaptitle').text('0-vehicle households')
+d3.select('#hhmaptitle').text('1-person households')
 drawmap()
 
 
@@ -450,61 +456,61 @@ function updateview(buttonarg) {
         census_count_var = 'HHRO64'
         whichone_name = 'HH greater than 64';
     }
-    else if (buttonarg == '1') {
+    else if (buttonarg == 'Mobile home or trailer') {
         whichone = 'pb1d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE1'
         whichone_name = 'Mobile home or trailer';
     }
-    else if (buttonarg == '2') {
+    else if (buttonarg == 'One-family detached') {
         whichone = 'pb2d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE2'
         whichone_name = 'One-family detached';
     }
-    else if (buttonarg == '3') {
+    else if (buttonarg == 'One-family attached') {
         whichone = 'pb3d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE3'
         whichone_name = 'One-family attached';
     }
-    else if (buttonarg == '4') {
+    else if (buttonarg == '2 Apartments') {
         whichone = 'pb4d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE4'
         whichone_name = '2 Apartments';
     }
-    else if (buttonarg == '5') {
+    else if (buttonarg == '3-4 Apartments') {
         whichone = 'pb5d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE5'
         whichone_name = '3-4 Apartments';
     }
-    else if (buttonarg == '6') {
+    else if (buttonarg == '5-9 Apartments') {
         whichone = 'pb6d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE6'
         whichone_name = '5-9 Apartments';
     }
-    else if (buttonarg == '7') {
+    else if (buttonarg == '10-19 Apartments') {
         whichone = 'pb7d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE7'
         whichone_name = '10-19 Apartments';
     }
-    else if (buttonarg == '8') {
+    else if (buttonarg == '20-49 Apartments') {
         whichone = 'pb8d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE8'
         whichone_name = '20-49 Apartments';
     }
-    else if (buttonarg == '9') {
+    else if (buttonarg == '50+ Apartments') {
         whichone = 'pb9d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE9'
         whichone_name = '50+ Apartments';
     }
-    else if (buttonarg == '10') {
+    else if (buttonarg == 'Boat, RV, van, etc.') {
         whichone = 'pb10d'
         model_count_var = 'HHSZ_4m'
         census_count_var = 'BTYPE10'
